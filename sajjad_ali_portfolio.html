@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajjad Ali | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e', // Emerald/WhatsApp Theme
+                            600: '#16a34a',
+                            700: '#15803d',
+                            primary: '#0f172a', // Dark Slate
+                            secondary: '#38bdf8' // Sky Blue accent
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-glow {
+            box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.4);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #22c55e 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #22c55e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #16a34a;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-extrabold tracking-tight flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white text-lg">S</span>
+                <span>Sajjad<span class="text-brand-500">.Ali</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#about" class="font-medium hover:text-brand-500 transition-colors">About</a>
+                <a href="#skills" class="font-medium hover:text-brand-500 transition-colors">Skills</a>
+                <a href="#projects" class="font-medium hover:text-brand-500 transition-colors">Projects</a>
+                <a href="#contact" class="font-medium hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Settings & Right CTA -->
+            <div class="flex items-center gap-4">
+                <!-- Dark Mode Toggle -->
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:scale-105 transition-transform" title="Toggle Theme">
+                    <i id="themeIcon" class="fas fa-moon text-lg"></i>
+                </button>
+
+                <!-- Resume Download CTA -->
+                <button onclick="openResumeModal()" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-600 hover:to-emerald-700 text-white font-semibold py-2 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>View CV</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-2xl" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 flex flex-col gap-4 animate-fadeIn">
+            <a href="#about" class="mobile-link py-2 font-medium border-b border-slate-100 dark:border-slate-800">About</a>
+            <a href="#skills" class="mobile-link py-2 font-medium border-b border-slate-100 dark:border-slate-800">Skills</a>
+            <a href="#projects" class="mobile-link py-2 font-medium border-b border-slate-100 dark:border-slate-800">Projects</a>
+            <a href="#contact" class="mobile-link py-2 font-medium border-b border-slate-100 dark:border-slate-800">Contact</a>
+            <button onclick="openResumeModal(); toggleMobileMenu();" class="w-full mt-2 inline-flex justify-center items-center gap-2 bg-brand-500 text-white font-semibold py-3 px-4 rounded-xl">
+                <i class="fas fa-file-pdf"></i>
+                <span>View CV / Resume</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-slate-50 dark:bg-slate-950">
+        <!-- Abstract background elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+            <!-- Text Content -->
+            <div class="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
+                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 dark:bg-brand-950/50 text-brand-700 dark:text-brand-400 font-semibold text-sm self-center lg:self-start mb-6 border border-brand-200 dark:border-brand-900/50">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse"></span>
+                    Available for Freelance & Full-time Roles
+                </span>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+                    Hi, I'm <span class="text-gradient">Sajjad Ali</span>
+                </h1>
+                
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-600 dark:text-slate-300 mb-6">
+                    Professional <span id="typing-text" class="text-brand-500 border-r-2 border-brand-500 pr-1 animate-pulse">Web Developer</span>
+                </h2>
+
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                    Building premium, responsive websites that deliver exceptional user experiences. Focused on combining robust design principles with clean, high-performance code.
+                </p>
+
+                <!-- Interactive Hero CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <!-- WhatsApp Contact Direct -->
+                    <a href="https://wa.me/923485986507?text=Hello%20Sajjad,%20I%20visited%20your%20portfolio%20and%20want%20to%20hire%20you!" 
+                       target="_blank" 
+                       class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 custom-glow"
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                        <span>Contact via WhatsApp</span>
+                    </a>
+
+                    <!-- Secondary Project Work -->
+                    <a href="#projects" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-semibold px-8 py-4 rounded-xl shadow-sm transition-all hover:-translate-y-0.5">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-down ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Fast Social Links -->
+                <div class="flex items-center justify-center lg:justify-start gap-6 mt-10">
+                    <a href="https://github.com/SajjadAli" target="_blank" class="text-slate-500 hover:text-black dark:hover:text-white transition-colors text-2xl" title="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sajjad-ali-887b42393?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-slate-500 hover:text-blue-600 transition-colors text-2xl" title="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:sajjadali@example.com" class="text-slate-500 hover:text-red-500 transition-colors text-2xl" title="Email Direct">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image / Graphic -->
+            <div class="lg:col-span-5 flex justify-center items-center">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                    <!-- Rotating Outer Ring -->
+                    <div class="absolute inset-0 rounded-full border-4 border-dashed border-brand-500/60 animate-[spin_60s_linear_infinite]"></div>
+                    <!-- Glow Layer -->
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-brand-500 to-sky-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                    <!-- Main Frame -->
+                    <div class="absolute inset-4 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden border-4 border-white dark:border-slate-900 flex items-center justify-center shadow-2xl">
+                        <!-- Simulated modern profile avatar using a custom visual -->
+                        <div class="w-full h-full flex flex-col justify-center items-center bg-gradient-to-b from-slate-800 to-slate-950 p-6 text-center text-white relative">
+                            <i class="fas fa-code text-5xl md:text-6xl text-brand-500 mb-4 animate-bounce"></i>
+                            <h3 class="text-lg md:text-xl font-bold">Sajjad Ali</h3>
+                            <p class="text-xs md:text-sm text-slate-400 mt-1">Full-Stack Magic Maker</p>
+                            <!-- Decorative code lines -->
+                            <div class="absolute bottom-6 left-6 right-6 font-mono text-[10px] text-brand-500/60 text-left leading-tight select-none">
+                                <code>const dev = new SajjadAli();<br>dev.buildExcellentWebsites();</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me & Quick Stats -->
+    <section id="about" class="py-24 bg-white dark:bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">About Me</h2>
+                <div class="w-16 h-1.5 bg-brand-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 dark:text-slate-400">Discover my passion, workflow, and values that I bring into every digital project.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Info Left -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100">
+                        Crafting High-Quality Digital Experiences
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        I am Sajjad Ali, an enthusiastic developer with an eye for UI/UX detail and a mind for structured, scalable coding. Utilizing HTML, CSS, and interactive JavaScript frameworks, I breathe life into designs and translate requirements into robust applications.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        My priority is client satisfaction, seamless cross-browser responsiveness, and optimized performance. Let's work together to make your ideas standout online!
+                    </p>
+                    
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <div class="flex items-center gap-3 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                            <i class="fas fa-check-circle text-brand-500"></i>
+                            <span class="font-medium text-sm">Responsive Design</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                            <i class="fas fa-check-circle text-brand-500"></i>
+                            <span class="font-medium text-sm">Interactive Logic</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                            <i class="fas fa-check-circle text-brand-500"></i>
+                            <span class="font-medium text-sm">API Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Right -->
+                <div class="lg:col-span-6 grid grid-cols-2 gap-6">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center hover:shadow-md transition-all">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-brand-500 mb-2">3+</div>
+                        <div class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Years of Code</div>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center hover:shadow-md transition-all">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-brand-500 mb-2">50+</div>
+                        <div class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Projects Done</div>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center hover:shadow-md transition-all">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-brand-500 mb-2">100%</div>
+                        <div class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Client Happiness</div>
+                    </div>
+                    <div class="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-center hover:shadow-md transition-all">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-brand-500 mb-2">24/7</div>
+                        <div class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Support Availability</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-slate-50 dark:bg-slate-950/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">My Skills & Expertise</h2>
+                <div class="w-16 h-1.5 bg-brand-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 dark:text-slate-400">These are the specialized technologies and modern languages I use daily to engineer projects.</p>
+            </div>
+
+            <!-- Skill Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Skill 1 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-800/50 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">HTML5</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Semantic structure, SEO optimization, and accessible markup layouts.</p>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-orange-500 h-full rounded-full" style="width: 95%;"></div>
+                    </div>
+                    <span class="text-xs font-semibold text-orange-500 mt-2 block text-right">95% Mastery</span>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-800/50 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">CSS3 & Tailwind</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Modern animations, Flexbox/Grid systems, responsive, and Tailwind CSS wizardry.</p>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full rounded-full" style="width: 90%;"></div>
+                    </div>
+                    <span class="text-xs font-semibold text-blue-500 mt-2 block text-right">90% Mastery</span>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-800/50 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">JavaScript ES6</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Dynamic interactions, asynchronous operations, event-loops, and functional logic.</p>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-yellow-500 h-full rounded-full" style="width: 85%;"></div>
+                    </div>
+                    <span class="text-xs font-semibold text-yellow-500 mt-2 block text-right">85% Mastery</span>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200/50 dark:border-slate-800/50 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Responsive UX</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Pixel-perfect design across smartphones, tablets, high-res monitors, and foldables.</p>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-emerald-500 h-full rounded-full" style="width: 95%;"></div>
+                    </div>
+                    <span class="text-xs font-semibold text-emerald-500 mt-2 block text-right">95% Mastery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Featured Work</h2>
+                <div class="w-16 h-1.5 bg-brand-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 dark:text-slate-400">Take a look at some of my recent client work and open-source project contributions.</p>
+                
+                <!-- Category Filters (Mock/Interactive) -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8">
+                    <button class="px-5 py-2 rounded-full bg-brand-500 text-white font-semibold text-sm transition-all shadow-md">All Projects</button>
+                    <button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold text-sm transition-all">HTML/CSS</button>
+                    <button class="px-5 py-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold text-sm transition-all">JavaScript</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-slate-50 dark:bg-slate-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-800/60 flex flex-col group">
+                    <div class="relative overflow-hidden aspect-video bg-gradient-to-tr from-[#1e293b] to-[#0f172a] flex items-center justify-center p-6 text-white">
+                        <i class="fas fa-shopping-cart text-5xl text-brand-500 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase">HTML + JS</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-brand-500 transition-colors">E-Commerce Storefront</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A complete front-end retail layout featuring instant dynamic cart updates, multi-filter navigation, and localized checkouts.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-200/50 dark:border-slate-800/50">
+                            <a href="https://github.com/SajjadAli" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400">
+                                <i class="fab fa-github"></i>
+                                <span>Code Base</span>
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-500 hover:text-brand-600">
+                                <span>Live Demo</span>
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-slate-50 dark:bg-slate-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-800/60 flex flex-col group">
+                    <div class="relative overflow-hidden aspect-video bg-gradient-to-tr from-[#1e293b] to-[#0f172a] flex items-center justify-center p-6 text-white">
+                        <i class="fas fa-chart-line text-5xl text-blue-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-4 right-4 bg-sky-500 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase">Tailwind CSS</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-brand-500 transition-colors">SaaS Admin Panel</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Clean dashboard user interface highlighting multiple charts, interactive calendar workflows, dark mode optimization, and rapid grid controls.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-200/50 dark:border-slate-800/50">
+                            <a href="https://github.com/SajjadAli" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400">
+                                <i class="fab fa-github"></i>
+                                <span>Code Base</span>
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-500 hover:text-brand-600">
+                                <span>Live Demo</span>
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-slate-50 dark:bg-slate-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-800/60 flex flex-col group">
+                    <div class="relative overflow-hidden aspect-video bg-gradient-to-tr from-[#1e293b] to-[#0f172a] flex items-center justify-center p-6 text-white">
+                        <i class="fas fa-cloud-sun-rain text-5xl text-yellow-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-4 right-4 bg-yellow-500 text-slate-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase">Pure API JS</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-brand-500 transition-colors">Dynamic Weather Hub</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Interactive weather report utility which interfaces directly with premium weather APIs, showing customized geographic updates and predictive statistics.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-200/50 dark:border-slate-800/50">
+                            <a href="https://github.com/SajjadAli" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400">
+                                <i class="fab fa-github"></i>
+                                <span>Code Base</span>
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-500 hover:text-brand-600">
+                                <span>Live Demo</span>
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-50 dark:bg-slate-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Get In Touch</h2>
+                <div class="w-16 h-1.5 bg-brand-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 dark:text-slate-400">Have an upcoming project or idea? Send me a message using either the form or direct social networks below.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <h3 class="text-2xl font-bold">Contact Details</h3>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Let's connect today! Feel free to reach out via WhatsApp, phone call, or email directly. I usually reply within minutes.
+                    </p>
+
+                    <!-- Info Cards -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/50 dark:border-slate-800/50">
+                            <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">Phone Number</p>
+                                <a href="tel:03485986507" class="font-bold text-slate-900 dark:text-white hover:text-brand-500 transition-colors">0348 598 6507</a>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Special Card -->
+                        <div class="flex items-center gap-4 p-4 bg-[#25D366]/10 rounded-2xl border border-[#25D366]/20">
+                            <div class="w-12 h-12 bg-[#25D366] text-white rounded-xl flex items-center justify-center text-xl shadow">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-[#128C7E] dark:text-[#25D366] uppercase font-semibold">Direct WhatsApp Chat</p>
+                                <a href="https://wa.me/923485986507" target="_blank" class="font-bold text-slate-900 dark:text-white hover:text-[#128C7E] dark:hover:text-[#25D366] transition-colors">Click to Chat Now</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/50 dark:border-slate-800/50">
+                            <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">Email Address</p>
+                                <a href="mailto:sajjadali@example.com" class="font-bold text-slate-900 dark:text-white hover:text-blue-500 transition-colors">sajjadali@example.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
+                    <h3 class="text-xl font-bold mb-6">Send Me a Message</h3>
+                    
+                    <form id="contactForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Your Name</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white transition-colors" placeholder="Sajjad Ali">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Your Email</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white transition-colors" placeholder="name@domain.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Subject</label>
+                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white transition-colors" placeholder="Project Inquiry / Job Opportunity">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Your Message</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white transition-colors resize-none" placeholder="Write details here..."></button></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-600 hover:to-emerald-700 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg transition-all hover:-translate-y-0.5">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Send Message</span>
+                            </button>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-left">
+                                Or directly write to me on WhatsApp for immediate support!
+                            </span>
+                        </div>
+                    </form>
+
+                    <!-- Status Banner -->
+                    <div id="formSuccess" class="hidden mt-6 p-4 bg-brand-100 dark:bg-brand-950/40 text-brand-800 dark:text-brand-300 rounded-xl flex items-center gap-3 border border-brand-200 dark:border-brand-900/50">
+                        <i class="fas fa-check-circle text-lg"></i>
+                        <span>Thank you! Your message was received successfully. I'll reach back shortly.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <!-- Brand -->
+            <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white text-lg font-bold">S</span>
+                <span class="text-white text-xl font-bold">Sajjad<span class="text-brand-500">.Ali</span></span>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-sm text-center md:text-left">
+                &copy; 2026 Sajjad Ali. All rights reserved. Built with pride &amp; excellence.
+            </p>
+
+            <!-- Social Links & Quick contact -->
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/SajjadAli" target="_blank" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sajjad-ali-887b42393?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://wa.me/923485986507" target="_blank" class="p-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white transition-colors" title="WhatsApp Message">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CV/Resume Lightbox Modal -->
+    <div id="resumeModal" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-fadeIn">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-950/50">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-file-pdf text-brand-500 text-2xl"></i>
+                    <div>
+                        <h3 class="font-bold text-lg">Sajjad Ali - Professional Curriculum Vitae</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Interactive Curriculum Vitae Preview</p>
+                    </div>
+                </div>
+                <button onclick="closeResumeModal()" class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-500 hover:text-slate-900 dark:hover:text-white" aria-label="Close CV">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Interactive Simulated Resume View) -->
+            <div class="p-6 overflow-y-auto space-y-8 text-left bg-slate-50 dark:bg-slate-950/40 text-slate-800 dark:text-slate-200 font-sans">
+                <!-- Header of CV -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-300 dark:border-slate-700 pb-6 gap-4">
+                    <div>
+                        <h2 class="text-3xl font-extrabold tracking-tight">Sajjad Ali</h2>
+                        <p class="text-brand-500 font-bold uppercase tracking-wider text-sm mt-1">Full Stack Web Developer</p>
+                    </div>
+                    <div class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
+                        <p><i class="fas fa-phone mr-2 text-brand-500"></i>0348 598 6507</p>
+                        <p><i class="fas fa-envelope mr-2 text-brand-500"></i>sajjadaliswat62@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-brand-500"></i>Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div>
+                    <h4 class="text-lg font-bold border-l-4 border-brand-500 pl-3 mb-3">Professional Summary</h4>
+                    <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                        Energetic and solution-driven Professional Developer with experience creating modern, highly optimized dynamic websites and responsive web structures. Highly proficient in HTML5, CSS3, modern utilities like Tailwind CSS, and core interactive JavaScript functionality. Outstanding communicator dedicated to aligning creative initiatives with client and business goals.
+                    </p>
+                </div>
+
+                <!-- Core Work History / Projects -->
+                <div>
+                    <h4 class="text-lg font-bold border-l-4 border-brand-500 pl-3 mb-4">Professional Milestones & Projects</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between font-bold text-sm">
+                                <h5>Lead Front-End Dev / Freelancer</h5>
+                                <span class="text-brand-500">2023 - Present</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-0.5">Self Employed</p>
+                            <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 mt-2 space-y-1">
+                                <li>Assembled responsive application frameworks for client startups using HTML5, modern CSS layouts and high-performance JavaScript.</li>
+                                <li>Engineered mobile-first styles using Tailwind CSS, lowering bounce rates by 25%.</li>
+                                <li>Maintained a 100% customer satisfaction score across 50+ completed direct service commissions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div>
+                    <h4 class="text-lg font-bold border-l-4 border-brand-500 pl-3 mb-3">Technical Skills Matrix</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2"><i class="fab fa-html5 text-orange-500"></i> HTML5 (Semantic)</div>
+                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2"><i class="fab fa-css3-alt text-blue-500"></i> CSS3 Layouts</div>
+                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2"><i class="fab fa-js text-yellow-500"></i> JavaScript ES6</div>
+                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2"><i class="fas fa-wind text-sky-400"></i> Tailwind CSS</div>
+                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2"><i class="fab fa-git-alt text-red-500"></i> Git & Version Control</div>
+                        <div class="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2"><i class="fas fa-mobile-alt text-emerald-500"></i> Responsive UI/UX</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Options -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 flex flex-col sm:flex-row gap-3 sm:justify-end items-center">
+                <!-- Direct Print / Simulated PDF Download -->
+                <button onclick="window.print()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold py-2.5 px-6 rounded-xl transition-all">
+                    <i class="fas fa-print"></i>
+                    <span>Print Resume</span>
+                </button>
+                <a href="https://wa.me/923485986507?text=Hello%20Sajjad,%20I'd%20like%20to%20request%20your%20customized%20PDF%20CV!" 
+                   target="_blank" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-md">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Get PDF via WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive JS Functionality -->
+    <script>
+        // Setup state variables
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const resumeModal = document.getElementById('resumeModal');
+
+        // Check user preferences for Light/Dark mode
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        // Theme Switch Logic
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Mobile Menu Logic
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
+        }
+
+        // Close Mobile Menu on Link Click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // Interactive Resume Lightbox Controls
+        function openResumeModal() {
+            resumeModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // block layout scroll
+        }
+
+        function closeResumeModal() {
+            resumeModal.classList.add('hidden');
+            document.body.style.overflow = ''; // allow layout scroll
+        }
+
+        // Close Modal when clicking outside the modal dialog box
+        resumeModal.addEventListener('click', (e) => {
+            if (e.target === resumeModal) {
+                closeResumeModal();
+            }
+        });
+
+        // Contact Form Interaction Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Get values
+            const nameValue = document.getElementById('name').value;
+            const subjectValue = document.getElementById('subject').value;
+            const msgValue = document.getElementById('message').value;
+
+            // Display success message in UI
+            const successBanner = document.getElementById('formSuccess');
+            successBanner.classList.remove('hidden');
+            
+            // Auto redirect to WhatsApp with the user message after 2.5 seconds
+            setTimeout(() => {
+                const preparedText = `Hello Sajjad Ali, my name is ${nameValue}. I want to talk about: "${subjectValue}". Detail: ${msgValue}`;
+                const encodedText = encodeURIComponent(preparedText);
+                window.open(`https://wa.me/923485986507?text=${encodedText}`, '_blank');
+                
+                // Reset form fields
+                document.getElementById('contactForm').reset();
+                successBanner.classList.add('hidden');
+            }, 2500);
+        }
+
+        // Simple Typing animation logic
+        const phrases = ["Web Developer", "UI/UX Specialist", "Freelance Partner"];
+        let currentPhraseIndex = 0;
+        let charIndex = 0;
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const delayBetweenPhrases = 2000;
+        const textElement = document.getElementById('typing-text');
+
+        function type() {
+            if (charIndex < phrases[currentPhraseIndex].length) {
+                textElement.textContent += phrases[currentPhraseIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(erase, delayBetweenPhrases);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                textElement.textContent = phrases[currentPhraseIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingSpeed);
+            } else {
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                setTimeout(type, typingSpeed);
+            }
+        }
+
+        // Start typing action on window load
+        window.onload = function() {
+            setTimeout(type, 500);
+        };
+    </script>
+</body>
+</html>
