@@ -168,9 +168,26 @@
                     </a>
                 </div>
             </div>
-
-            <!-- Profile Image / Graphic -->
+<!-- Profile Image / Graphic -->
             <div class="lg:col-span-5 flex justify-center items-center">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                    <!-- Rotating Outer Ring -->
+                    <div class="absolute inset-0 rounded-full border-4 border-dashed border-brand-500/60 animate-[spin_60s_linear_infinite]"></div>
+                    <!-- Glow Layer -->
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-brand-500 to-sky-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                    <!-- Main Frame (Normal Image Tag) -->
+                    <div class="absolute inset-4 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden border-4 border-white dark:border-slate-900 flex items-center justify-center shadow-2xl">
+                        <img 
+                            src="path/to/your-profile-image.jpg" 
+                            alt="Sajjad Ali" 
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <!-- Profile Image / Graphic -->
+            <!-- <div class="lg:col-span-5 flex justify-center items-center">
                 <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
                     <!-- Rotating Outer Ring -->
                     <div class="absolute inset-0 rounded-full border-4 border-dashed border-brand-500/60 animate-[spin_60s_linear_infinite]"></div>
@@ -189,8 +206,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            </div> -->
         </div>
     </section>
 
